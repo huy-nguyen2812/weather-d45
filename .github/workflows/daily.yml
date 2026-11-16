@@ -1,0 +1,29 @@
+name: daily-weather
+on:
+  schedule:
+    - cron: "0 0 * * *"   # 07:00 giờ Việt Nam
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install requests pandas gspread google-auth
+      - name: Ghi khóa Google
+        env:
+          GCP_SA_JSON: ${{ secrets.GCP_SA_JSON }}
+        run: printf '%s' "$GCP_SA_JSON" > service_account.json
+      - name: Cập nhật dữ liệu và đẩy lên Sheets
+        run: python fetch_weather.py --update --sheet-id ${{ secrets.SHEET_ID }} --creds service_account.json
+      - name: Lưu dữ liệu vào repository
+        run: |
+          git config user.name "weather-bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add data
+          git commit -m "Cập nhật dữ liệu thời tiết" || echo "Không có thay đổi"
+          git push
