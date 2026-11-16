@@ -149,7 +149,10 @@ def push_to_sheets(sheet_id, creds, tables: dict):
             if str(out[c].dtype).startswith("datetime"):
                 out[c] = out[c].dt.strftime("%Y-%m-%d %H:%M")
         out = out.astype(object).where(out.notna(), "")
-        ws.update([out.columns.tolist()] + out.astype(str).values.tolist())
+        # raw=False -> USER_ENTERED: Sheets tự nhận số/ngày/TRUE-FALSE thay vì lưu dạng chữ
+        ws.update(range_name="A1",
+                  values=[out.columns.tolist()] + out.astype(str).values.tolist(),
+                  raw=False)
         print(f"  đã đẩy sheet '{name}': {len(out)} dòng")
 
 
