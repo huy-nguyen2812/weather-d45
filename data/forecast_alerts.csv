@@ -1,8 +1,8 @@
 date,t_max_forecast,apparent_temperature_max,precipitation_sum,alert,alert_humid
-2026-11-21,31.3,37.4,0.4,Bình thường,Bình thường
-2026-11-22,32.4,39.2,0.9,Bình thường,Bình thường
-2026-11-23,33.1,40.5,3.4,Bình thường,OI BỨC (cảm nhận >=40°C)
-2026-11-24,32.0,38.9,1.4,Bình thường,Bình thường
-2026-11-25,31.9,38.8,3.6,Bình thường,Bình thường
-2026-11-26,31.8,39.1,1.5,Bình thường,Bình thường
-2026-11-27,31.4,35.7,1.8,Bình thường,Bình thường
+2026-11-22,32.8,40.1,0.4,Bình thường,OI BỨC (cảm nhận >=40°C)
+2026-11-23,32.7,39.8,1.8,Bình thường,Bình thường
+2026-11-24,32.3,39.3,7.9,Bình thường,Bình thường
+2026-11-25,30.9,36.5,2.3,Bình thường,Bình thường
+2026-11-26,31.9,38.9,2.1,Bình thường,Bình thường
+2026-11-27,31.7,38.9,2.7,Bình thường,Bình thường
+2026-11-28,30.4,35.3,39.0,Bình thường,Bình thường
